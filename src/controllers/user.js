@@ -22,7 +22,7 @@ const addUser =async (req, res) => {
 const updateUser = async (req, res) => {
     try {
         const user = await User.finByIdAndUpdate(req.params.id, req.body, {
-            new: true;
+            new: true
         });
         console.log(user);
         res.status(200).send(user);
