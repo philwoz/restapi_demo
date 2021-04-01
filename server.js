@@ -1,0 +1,26 @@
+require("./src/db/connection");
+
+const express = require("express");
+const {userRouter} = require("./src/routes/user");
+const { postRouter } = require("./src/routes/posts");
+
+const port = process.env.PORT || 5000;
+// init instance of express
+const app = express();
+
+// middleware
+app.use(express.json());
+
+app.use(userRouter);
+app.use(postRouter);
+
+//routes/endpoints
+app.get("/health", (req, res) => {
+    res.send({ message: "API is working correctly"})
+});
+
+//server
+app.listen(port, () => {
+    console.log(`Server listening on port ${port}`)
+});
+
