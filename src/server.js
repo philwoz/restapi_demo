@@ -1,8 +1,8 @@
-require("./src/db/connection");
+require("../src/db/connection");
 
 const express = require("express");
-const {userRouter} = require("./src/routes/user");
-const { postRouter } = require("./src/routes/posts");
+const { userRouter } = require("./routes/user");
+const { postRouter } = require("./routes/posts");
 
 const port = process.env.PORT || 5000;
 // init instance of express
