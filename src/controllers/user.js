@@ -41,9 +41,27 @@ const deleteUser = async (req, res) => {
     }
 };
 
+const login = async (req, res) => {
+    try {
+        const user = await User.findByCredetials(
+            req.body.email,
+            req.body.password
+        );
+
+        const token = await user.generateAuthToken();
+
+        res.status(200).send({ user, token})
+    }catch(error) {
+        console.log(error);
+        res.status(400).send({message: "Unable to login"});
+
+    }
+};
+
 module.exports = {
     getAllUser,
     addUser,
     updateUser,
     deleteUser,
+    login,
 }
