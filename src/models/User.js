@@ -37,7 +37,7 @@ userSchema.statics.findByCredetials = async function (email, password) => {
 };
 
 userSchema.methods.generateAuthToken = async function () {
-  const token = jwt.sign({ _id: this_id}, process.env.SECRET, {
+  const token = await jwt.sign({ _id: this_id}, process.env.SECRET, {
     expiresIn: "1 week",
   })
   return token;
